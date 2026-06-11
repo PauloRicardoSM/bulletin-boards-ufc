@@ -79,9 +79,6 @@ function getAboutPage() {
                     <li>❤️ Sistema de engajamento com curtidas</li>
                     <li>📊 Visualização de popularidade de posts</li>
                 </ul>
-
-                <h3>Valores</h3>
-                <p>Acreditamos em transparência, colaboração e no poder da informação compartilhada para fortalecer nossa comunidade acadêmica.</p>
             </div>
         </div>
     `;
