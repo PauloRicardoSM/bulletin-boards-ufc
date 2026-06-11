@@ -37,39 +37,13 @@ trabalho/
 └── styles.css.bak                 # Backup do CSS original
 ```
 
-## ✨ Melhorias Implementadas
-
-### 1. **Data de Publicação** ✅
-- Adicionada data ao lado do nome do criador em cada card
-- Formatação em português (DD/MM/YYYY)
-
-### 2. **Remoção de "Avisos" da NavBar** ✅
-- "Avisos" removido da navegação
-- Substituído por filtros na barra de pesquisa ("Últimos" e "Top")
-
-### 3. **Páginas "Sobre nós" e "Contato"** ✅
-- Navegação dinâmica sem recarregamento de página
-- Conteúdo carregado dinamicamente via JavaScript (SPA)
-- Formulário funcional na página de contato
-
-### 4. **Botão "Publicar" em Telas Menores** ✅
-- Botão aparece ao lado da barra de pesquisa em dispositivos móveis
-- Responsivo a partir de 720px
-
-### 5. **Modal de Expansão de Cards** ✅
-- Clique no card para expandir e ver descrição completa
-- Modal com overlay escuro
-- Botões de like e view funcionais dentro do modal
-- Fechar com "X" ou pressionando Escape
-
 ## 🎯 Funcionalidades
 
-- **Filtros**: Ordene por "Últimos" ou "Top" (mais curtidas)
-- **Busca**: Procure por título ou autor
-- **Like/View**: Sistema de engajamento com contagem
-- **Navegação**: Mude entre Home, Sobre e Contato sem recarregar
-- **Responsivo**: Funciona em desktop, tablet e mobile
-- **Modal**: Expanda cards para ver detalhes completos
+- Sistema de curtidas e visualizações
+- Ordenação dinâmica dos avisos
+- Busca em tempo real
+- Modal para visualização completa
+- Navegação SPA sem recarregamento
 
 ## 🚀 Como Usar
 
@@ -85,6 +59,10 @@ python3 -m http.server 8000
 ```
 
 Acesse `http://localhost:8000` no navegador.
+
+### Disponibilidade web
+
+Acesse o site [aqui](https://pauloricardosm.github.io/bulletin-boards-ufc/).
 
 ### Estrutura de Dados (avisos.js)
 
@@ -166,6 +144,68 @@ Os arquivos originais foram mantidos como backup:
 - Modal usa `position: fixed` com `z-index: 1000`
 - Navegação SPA não altera a URL (sem router formal)
 
----
+## 📜 Licença
 
-**Desenvolvido com ❤️ para a UFC**
+Projeto desenvolvido para fins acadêmicos.
+
+<h2>👥 Equipe</h2>
+
+<table>
+<tr>
+<td align="center">
+<a href="https://github.com/PauloRicardoSM">
+<img src="https://github.com/PauloRicardoSM.png" width="100px"><br>
+<b>Paulo Ricardo</b>
+</a>
+</td>
+
+<td align="center">
+<a href="https://github.com/kill-dere">
+<img src="https://github.com/kill-dere.png" width="100px"><br>
+<b>Antônio Kildere</b>
+</a>
+</td>
+
+<td align="center">
+<a href="https://github.com/brendonGMS">
+<img src="https://github.com/brendonGMS.png" width="100px"><br>
+<b>Francisco Breno</b>
+</a>
+</td>
+
+<td align="center">
+<a href="https://github.com/Eros-afk">
+<img src="https://github.com/Eros-afk.png" width="100px"><br>
+<b>Eros Ryan</b>
+</a>
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<a href="https://github.com/Zagreus1447">
+<img src="https://github.com/Zagreus1447.png" width="100px"><br>
+<b>Azael Frota</b>
+</a>
+</td>
+
+<td align="center">
+<a href="https://github.com/tayalvess">
+<img src="https://github.com/tayalvess.png" width="100px"><br>
+<b>Taynara Alves</b>
+</a>
+</td>
+
+<td align="center">
+<img src="https://avatars.githubusercontent.com/u/0?v=4" width="100px"><br>
+<b>Daniel Neco Silva</b>
+</td>
+
+<td align="center">
+<a href="https://github.com/anarchyysm">
+<img src="https://github.com/anarchyysm.png" width="100px"><br>
+<b>Emanuel Magalhães</b>
+</a>
+</td>
+</tr>
+</table>
