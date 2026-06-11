@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulletin Boards UFC</title>
+    <link rel="stylesheet" href="src/css/index.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <span class="logo-icon"></span>
+            <span class="logo-text">Bulletin Boards UFC</span>
+        </div>
+        <nav class="nav">
+            <a href="#" class="nav-link active" data-page="home">Início</a>
+            <a href="#" class="nav-link" data-page="about">Sobre nós</a>
+            <a href="#" class="nav-link" data-page="contact">Contato</a>
+        </nav>
+        <button class="btn-cta">Fale conosco</button>
+    </header>
+
+    <main class="main">
+        <section class="content">
+            <div class="toolbar">
+                <div class="search-wrapper">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Buscar">
+                    <span class="search-icon">⌕</span>
+                </div>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="ultimos">Últimos</button>
+                    <button class="filter-btn" data-filter="top">Top</button>
+                </div>
+            </div>
+
+            <div class="cards-grid" id="cardsGrid">
+                <!-- cards injetados via JS -->
+            </div>
+
+            <div class="pagination">
+                <button class="btn-pagination" id="loadMoreBtn">Mais antigos</button>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <div class="share-card">
+                <h3 class="share-title">Tem algo para compartilhar com o campus?</h3>
+                <ul class="share-list">
+                    <li>Dê um título curto (ex: Vaga de Monitoria)</li>
+                    <li>Adicione as informações principais do seu aviso.</li>
+                </ul>
+                <button class="btn-publish">Publicar no mural</button>
+            </div>
+        </aside>
+    </main>
+
+    <script type="module" src="src/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+const avisos = [
+    {
+        id: 1,
+        title: "Seleção de Novos Membros – Projeto Nuclic",
+        author: "Criado por Jameson Lopes",
+        description: "O Nuclic está com seleção aberta para novos membros! Buscamos estudantes interessados em criar e desenvolver soluções tecnológicas reais. Inscreva-se e venha desenvolver com a gente.",
+        views: 124,
+        likes: 38,
+        date: "2026-04-28",
+        liked: false
+    },
+    {
+        id: 2,
+        title: "Oficina: Robótica Educativa na Prática",
+        author: "Criado por Lalla Calvacan...",
+        description: "Aprenda noções básicas de robótica para o ensino fundamental. Vamos montar protótipos e discutir aplicação em sala de aula em uma oficina prática gratuita.",
+        views: 87,
+        likes: 21,
+        date: "2026-04-27",
+        liked: false
+    },
+    {
+        id: 3,
+        title: "Instalifest: Otimizando seu Linux Mint",
+        author: "Criado por PET ENG COMP",
+        description: "Vagas reservadas para quem quer configurar drivers de vídeo, otimizar ambientes WSL2/Container e dominar a terminal como um profissional.",
+        views: 203,
+        likes: 64,
+        date: "2026-04-26",
+        liked: false
+    },
+    {
+        id: 4,
+        title: "Voluntários: Coleta de Dados para Sinais ECG",
+        author: "Criado por Laboratório d...",
+        description: "Pesquisa acadêmica para coleta de sinais ECG. Uma pesquisa estruturada para alunos voluntários, contribua com a ciência da computação aplicada à saúde.",
+        views: 56,
+        likes: 12,
+        date: "2026-04-25",
+        liked: false
+    },
+    {
+        id: 5,
+        title: "Plantão de Dúvidas: Métodos Numéricos e EDO",
+        author: "Criado por Centro Acadê...",
+        description: "Já caímos no plantão? E temos plantão hoje! Métodos Numéricos focado em Métodos de Runge Kutta e equação diferencial ordinária para a comunidade interna e externa.",
+        views: 142,
+        likes: 49,
+        date: "2026-04-24",
+        liked: false
+    },
+    {
+        id: 6,
+        title: "Lançamento da Plataforma AlphaLibras e...",
+        author: "Criado por Grupo de Inov...",
+        description: "Já conhece a AlphaLibras? É uma nova plataforma colaborativa para compartilhar materiais de estudo e materiais didáticos, acesse e ajude a aprimoração nessa semana.",
+        views: 311,
+        likes: 102,
+        date: "2026-04-23",
+        liked: false
+    }
+];
+
+const cardsGrid = document.getElementById('cardsGrid');
+const searchInput = document.getElementById('searchInput');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+let currentFilter = 'ultimos';
+let currentSearch = '';
+
+function eyeIcon() {
+    return `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+        <circle cx="12" cy="12" r="3"/>
+    </svg>`;
+}
+
+function thumbsUpIcon(filled) {
+    if (filled) {
+        return `<svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 10v12"/>
+            <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H7V10l4.34-7.66a1.93 1.93 0 0 1 3.5 1.5z"/>
+        </svg>`;
+    }
+    return `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 10v12"/>
+        <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H7V10l4.34-7.66a1.93 1.93 0 0 1 3.5 1.5z"/>
+    </svg>`;
+}
+
+function renderCards() {
+    const filtered = avisos.filter(a => {
+        const q = currentSearch.toLowerCase().trim();
+        if (!q) return true;
+        return a.title.toLowerCase().includes(q) || a.author.toLowerCase().includes(q);
+    });
+
+    const sorted = [...filtered].sort((a, b) => {
+        if (currentFilter === 'top') return b.likes - a.likes;
+        return new Date(b.date) - new Date(a.date);
+    });
+
+    cardsGrid.innerHTML = sorted.map(a => `
+        <article class="card" data-id="${a.id}">
+            <h3 class="card-title">${a.title}</h3>
+            <p class="card-author">${a.author}</p>
+            <p class="card-description">${a.description}</p>
+            <div class="card-actions">
+                <button class="card-action" data-action="view" aria-label="Visualizações">
+                    ${eyeIcon()}
+                    <span>${a.views}</span>
+                </button>
+                <button class="card-action ${a.liked ? 'liked' : ''}" data-action="like" aria-label="Curtir">
+                    ${thumbsUpIcon(a.liked)}
+                    <span>${a.likes}</span>
+                </button>
+            </div>
+        </article>
+    `).join('');
+
+    if (sorted.length === 0) {
+        cardsGrid.innerHTML = `<p style="grid-column: 1/-1; text-align:center; padding: 40px; opacity: 0.6;">Nenhum aviso encontrado.</p>`;
+    }
+
+    attachCardListeners();
+}
+
+function attachCardListeners() {
+    document.querySelectorAll('.card-action[data-action="like"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const card = e.currentTarget.closest('.card');
+            const id = parseInt(card.dataset.id, 10);
+            const aviso = avisos.find(a => a.id === id);
+            aviso.liked = !aviso.liked;
+            aviso.likes += aviso.liked ? 1 : -1;
+            renderCards();
+        });
+    });
+
+    document.querySelectorAll('.card-action[data-action="view"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const card = e.currentTarget.closest('.card');
+            const id = parseInt(card.dataset.id, 10);
+            const aviso = avisos.find(a => a.id === id);
+            aviso.views += 1;
+            renderCards();
+        });
+    });
+}
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderCards();
+    });
+});
+
+searchInput.addEventListener('input', (e) => {
+    currentSearch = e.target.value;
+    renderCards();
+});
+
+loadMoreBtn.addEventListener('click', () => {
+    loadMoreBtn.textContent = 'Carregando...';
+    setTimeout(() => {
+        loadMoreBtn.textContent = 'Mais antigos';
+        alert('Não há mais avisos antigos para carregar.');
+    }, 600);
+});
+
+document.querySelector('.btn-publish').addEventListener('click', () => {
+    alert('Funcionalidade de publicação ainda não implementada.');
+});
+
+document.querySelector('.btn-cta').addEventListener('click', () => {
+    alert('Página de contato ainda não implementada.');
+});
+
+renderCards();
