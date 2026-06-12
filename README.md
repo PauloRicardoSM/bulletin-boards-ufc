@@ -58,7 +58,7 @@ python3 -m http.server 8000
 # php -S localhost:8000
 ```
 
-Acesse `http://localhost:8000` no navegador.
+Acesse `http://0.0.0.0:8000` no navegador.
 
 ### Disponibilidade web
 
