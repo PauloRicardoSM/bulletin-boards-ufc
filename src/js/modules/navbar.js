@@ -48,18 +48,19 @@ function getHomePage() {
                 <button class="filter-btn active" data-filter="ultimos">Últimos</button>
                 <button class="filter-btn" data-filter="top">Top</button>
             </div>
-            <button class="tag-filter-btn" id="tagFilterBtn">🏷️ Tags</button>
+            <div class="tag-filter-wrapper">
+                <button class="tag-filter-btn" id="tagFilterBtn">🏷️ Tags</button>
+                <div id="tagFilterDropdown" class="tag-filter-dropdown" style="display: none;">
+                    <div class="tag-filter-header">
+                        <h4>Filtrar por tags</h4>
+                        <button class="tag-filter-close" id="closeTagFilter">&times;</button>
+                    </div>
+                    <div class="tag-filter-content" id="tagFilterContent">
+                        <!-- tags injetadas via JS -->
+                    </div>
+                </div>
+            </div>
             <button class="btn-publish-mobile">Publicar no mural</button>
-        </div>
-
-        <div id="tagFilterDropdown" class="tag-filter-dropdown" style="display: none;">
-            <div class="tag-filter-header">
-                <h4>Filtrar por tags</h4>
-                <button class="tag-filter-close" id="closeTagFilter">&times;</button>
-            </div>
-            <div class="tag-filter-content" id="tagFilterContent">
-                <!-- tags injetadas via JS -->
-            </div>
         </div>
 
         <div class="cards-grid" id="cardsGrid">

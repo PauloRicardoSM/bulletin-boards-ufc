@@ -55,6 +55,12 @@
     align-items: center;
 }
 
+/* TAG FILTER WRAPPER */
+.tag-filter-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
 /* TAG FILTER BUTTON */
 .tag-filter-btn {
     background-color: var(--white);
@@ -77,7 +83,7 @@
 .tag-filter-dropdown {
     position: absolute;
     top: 100%;
-    right: 0;
+    left: 0;
     background-color: var(--white);
     border: var(--border);
     border-radius: var(--border-radius-md);
@@ -87,6 +93,7 @@
     max-height: 400px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
+
 
 .tag-filter-header {
     display: flex;
@@ -166,14 +173,11 @@
     }
 
     .tag-filter-dropdown {
-        position: fixed;
-        top: auto;
-        right: auto;
-        left: var(--spacing-md);
-        bottom: auto;
-        min-width: auto;
-        max-width: calc(100% - 2 * var(--spacing-md));
-        max-height: 60vh;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 280px;
+        max-height: 400px;
     }
 }
 
