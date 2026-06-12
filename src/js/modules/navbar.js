@@ -48,7 +48,18 @@ function getHomePage() {
                 <button class="filter-btn active" data-filter="ultimos">Últimos</button>
                 <button class="filter-btn" data-filter="top">Top</button>
             </div>
+            <button class="tag-filter-btn" id="tagFilterBtn">🏷️ Tags</button>
             <button class="btn-publish-mobile">Publicar no mural</button>
+        </div>
+
+        <div id="tagFilterDropdown" class="tag-filter-dropdown" style="display: none;">
+            <div class="tag-filter-header">
+                <h4>Filtrar por tags</h4>
+                <button class="tag-filter-close" id="closeTagFilter">&times;</button>
+            </div>
+            <div class="tag-filter-content" id="tagFilterContent">
+                <!-- tags injetadas via JS -->
+            </div>
         </div>
 
         <div class="cards-grid" id="cardsGrid">
@@ -79,6 +90,58 @@ function getAboutPage() {
                     <li>❤️ Sistema de engajamento com curtidas</li>
                     <li>📊 Visualização de popularidade de posts</li>
                 </ul>
+
+                <h3>Nossa Equipe</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <a href="https://github.com/PauloRicardoSM" target="_blank">
+                            <img src="https://github.com/PauloRicardoSM.png" alt="Paulo Ricardo" class="team-avatar">
+                            <p class="team-name">Paulo Ricardo</p>
+                        </a>
+                    </div>
+                    <div class="team-member">
+                        <a href="https://github.com/kill-dere" target="_blank">
+                            <img src="https://github.com/kill-dere.png" alt="Antônio Kildere" class="team-avatar">
+                            <p class="team-name">Antônio Kildere</p>
+                        </a>
+                    </div>
+                    <div class="team-member">
+                        <a href="https://github.com/brendonGMS" target="_blank">
+                            <img src="https://github.com/brendonGMS.png" alt="Francisco Breno" class="team-avatar">
+                            <p class="team-name">Francisco Breno</p>
+                        </a>
+                    </div>
+                    <div class="team-member">
+                        <a href="https://github.com/Eros-afk" target="_blank">
+                            <img src="https://github.com/Eros-afk.png" alt="Eros Ryan" class="team-avatar">
+                            <p class="team-name">Eros Ryan</p>
+                        </a>
+                    </div>
+                    <div class="team-member">
+                        <a href="https://github.com/Zagreus1447" target="_blank">
+                            <img src="https://github.com/Zagreus1447.png" alt="Azael Frota" class="team-avatar">
+                            <p class="team-name">Azael Frota</p>
+                        </a>
+                    </div>
+                    <div class="team-member">
+                        <a href="https://github.com/tayalvess" target="_blank">
+                            <img src="https://github.com/tayalvess.png" alt="Taynara Alves" class="team-avatar">
+                            <p class="team-name">Taynara Alves</p>
+                        </a>
+                    </div>
+                    <div class="team-member">
+                        <a href="https://github.com/danielneco" target="_blank">
+                            <img src="https://github.com/danielneco.png" alt="Daniel Neco Silva" class="team-avatar">
+                            <p class="team-name">Daniel Neco Silva</p>
+                        </a>
+                    </div>
+                    <div class="team-member">
+                        <a href="https://github.com/anarchyysm" target="_blank">
+                            <img src="https://github.com/anarchyysm.png" alt="Emanuel Magalhães" class="team-avatar">
+                            <p class="team-name">Emanuel Magalhães</p>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     `;

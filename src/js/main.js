@@ -1,12 +1,14 @@
 import { avisos } from './data/avisos.js';
 import { renderCards, getFilteredAndSorted, eyeIcon, thumbsUpIcon } from './modules/cards.js';
 import { initFilters } from './modules/filters.js';
+import { initTagFilters, getSelectedTags, clearSelectedTags } from './modules/tag-filters.js';
 import { attachCardClickListeners } from './modules/modal.js';
 import { initNavigation, loadPage } from './modules/navbar.js';
 import { openPublishModal } from './modules/publish.js';
 
 let currentFilter = 'ultimos';
 let currentSearch = '';
+let currentTagFilters = [];
 
 function initializeApp() {
     loadPage('home');
@@ -18,13 +20,14 @@ function initializeApp() {
 function initializeHomeContent() {
     renderAllCards();
     initFilters(handleFilterChange);
+    initTagFilters(handleTagFilterChange);
     setupSearchInput();
     setupLoadMoreButton();
     setupPublishButton();
 }
 
 function renderAllCards() {
-    const { filtered, sorted } = getFilteredAndSorted(currentSearch, currentFilter);
+    const { filtered, sorted } = getFilteredAndSorted(currentSearch, currentFilter, currentTagFilters);
     const cardsGrid = document.getElementById('cardsGrid');
     renderCards(filtered, sorted, cardsGrid);
     attachCardClickListeners(renderAllCards);
@@ -32,6 +35,11 @@ function renderAllCards() {
 
 function handleFilterChange(filter) {
     currentFilter = filter;
+    renderAllCards();
+}
+
+function handleTagFilterChange(selectedTags) {
+    currentTagFilters = selectedTags;
     renderAllCards();
 }
 
@@ -77,6 +85,8 @@ function setupEventListeners() {
     window.addEventListener('page-changed', () => {
         currentFilter = 'ultimos';
         currentSearch = '';
+        currentTagFilters = [];
+        clearSelectedTags();
         initializeHomeContent();
     });
 
@@ -86,3 +96,4 @@ function setupEventListeners() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeApp);
+

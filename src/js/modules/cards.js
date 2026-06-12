@@ -55,11 +55,15 @@ export function renderCards(filtered, sorted, cardsGrid) {
     }
 }
 
-export function getFilteredAndSorted(currentSearch, currentFilter) {
+export function getFilteredAndSorted(currentSearch, currentFilter, selectedTags = []) {
     const filtered = avisos.filter(a => {
         const q = currentSearch.toLowerCase().trim();
-        if (!q) return true;
-        return a.title.toLowerCase().includes(q) || a.author.toLowerCase().includes(q);
+        const matchesSearch = !q || a.title.toLowerCase().includes(q) || a.author.toLowerCase().includes(q);
+
+        const matchesTags = selectedTags.length === 0 ||
+            (a.tags && a.tags.some(tag => selectedTags.includes(tag)));
+
+        return matchesSearch && matchesTags;
     });
 
     const sorted = [...filtered].sort((a, b) => {
