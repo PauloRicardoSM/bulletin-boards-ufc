@@ -197,7 +197,8 @@ Projeto desenvolvido para fins acadêmicos.
 </td>
 
 <td align="center">
-<img src="https://avatars.githubusercontent.com/u/0?v=4" width="100px"><br>
+<a href="https://github.com/danielneco">
+<img src="https://github.com/danielneco.png" width="100px"><br>
 <b>Daniel Neco Silva</b>
 </td>
 
